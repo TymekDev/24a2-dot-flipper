@@ -1,7 +1,9 @@
-var clicked = {
-  x: null,
-  y: null,
+let dim = {
+  w: 15,
+  h: 15,
 }
+
+var clicked = {x: null, y: null};
 
 function create(g) {}
 
@@ -16,11 +18,6 @@ function update(g) {
 function onDotClicked(x, y) {
   clicked.x = x;
   clicked.y = y;
-}
-
-let dim = {
-  w: 5,
-  h: 5,
 }
 
 let config = {
