@@ -42,6 +42,7 @@ function reset(g) {
 function update(g) {
   if (won) {
     g.setText("Congrats! Solved in " + moves + ".");
+    return;
   }
 
   if (clicked.x !== null && clicked.y !== null) {
