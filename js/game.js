@@ -38,7 +38,7 @@ function update(g) {
   }
 
   s = moves > 1 ? "s" : ""
-  g.setText("Congrats! Solved with " + moves + " move" + s + ".");
+  g.setText("Congrats! Solved in " + moves + ".");
   g.end()
 }
 
