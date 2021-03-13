@@ -1,3 +1,7 @@
+#description {
+  text-align: center;
+}
+
 #game canvas {
   display: block;
   margin: auto;
