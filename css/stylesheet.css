@@ -6,3 +6,12 @@
   display: block;
   margin: auto;
 }
+
+footer {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 10px;
+  font-size: 12px;
+  text-align: center;
+}
