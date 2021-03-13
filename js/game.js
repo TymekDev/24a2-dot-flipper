@@ -3,7 +3,8 @@ let dim = {
   h: 15,
 }
 
-var max_req_moves = 15,
+var moves = 0,
+    max_req_moves = 15,
     clicked = {x: null, y: null};
 
 function create(g) {
@@ -23,11 +24,24 @@ function update(g) {
     clicked.x = null;
     clicked.y = null;
   }
+
+  g.setText("Moves: " + moves);
+
+  for (let ix = 0; ix < dim.w; ix++) {
+    for (let iy = 0; iy < dim.h; iy++) {
+      if (g.getDot(ix, iy) != Color.Gray) {
+        return;
+      }
+    }
+  }
+
+  g.setText("Congrats! Solved with " + moves + " move(s).");
 }
 
 function onDotClicked(x, y) {
   clicked.x = x;
   clicked.y = y;
+  moves++;
 }
 
 let config = {
