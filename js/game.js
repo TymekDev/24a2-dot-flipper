@@ -13,12 +13,7 @@ var won,
     scramble_moves;
 
 function create(g) {
-  won = false;
-  moves = 0;
-  scramble_moves = Math.max(
-    min_req_moves,
-    Math.floor(Math.random() * max_req_moves)
-  );
+  reset(g);
 
   var x, y;
   for (let i = 0; i < scramble_moves; i++) {
@@ -29,9 +24,17 @@ function create(g) {
   }
 }
 
+function reset(g) {
+  won = false;
+  moves = 0;
+  scramble_moves = Math.max(
+    min_req_moves,
+    Math.floor(Math.random() * max_req_moves)
+  );
+}
+
 function update(g) {
   if (won) {
-    s = moves > 1 ? "s" : ""
     g.setText("Congrats! Solved in " + moves + ".");
   }
 
