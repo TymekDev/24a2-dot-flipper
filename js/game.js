@@ -35,7 +35,9 @@ function update(g) {
     }
   }
 
-  g.setText("Congrats! Solved with " + moves + " move(s).");
+  s = moves > 1 ? "s" : ""
+  g.setText("Congrats! Solved with " + moves + " move" + s + ".");
+  g.end()
 }
 
 function onDotClicked(x, y) {
