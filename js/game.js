@@ -16,13 +16,13 @@ function create(g) {
     x = Math.floor(Math.random() * dim.w);
     y = Math.floor(Math.random() * dim.h);
 
-    flipCross(g, x, y);
+    flip_cross(g, x, y);
   }
 }
 
 function update(g) {
   if (clicked.x !== null && clicked.y !== null) {
-    flipCross(g, clicked.x, clicked.y);
+    flip_cross(g, clicked.x, clicked.y);
     clicked.x = null;
     clicked.y = null;
   }
