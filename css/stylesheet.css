@@ -2,9 +2,13 @@
   text-align: center;
 }
 
-#game canvas {
+#game canvas, #restart {
   display: block;
   margin: auto;
+}
+
+#restart {
+  margin-top: 30px;
 }
 
 footer {
