@@ -2,7 +2,7 @@ function create(g) {}
 
 function update(g) {}
 
-function onDotClicked(d) {}
+function onDotClicked(x, y) {}
 
 let dim = {
   w: 5,
