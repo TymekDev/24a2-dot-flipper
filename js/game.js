@@ -66,7 +66,7 @@ function update(g) {
   }
 
   won = true;
-  text = won_text()
+  text = won_text();
 
   // Set text immediately to avoid display stutter
   g.setText("Congrats! | " + moving_text());
