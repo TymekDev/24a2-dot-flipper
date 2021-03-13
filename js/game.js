@@ -3,13 +3,15 @@ let dim = {
   h: 15,
 }
 
-var moves,
+var won,
+    moves,
     scramble_moves,
     min_req_moves = 2,
     max_req_moves = 10,
     clicked = {x: null, y: null};
 
 function create(g) {
+  won = false;
   moves = 0;
   scramble_moves = Math.max(
     min_req_moves,
@@ -26,6 +28,11 @@ function create(g) {
 }
 
 function update(g) {
+  if (won) {
+    s = moves > 1 ? "s" : ""
+    g.setText("Congrats! Solved in " + moves + ".");
+  }
+
   if (clicked.x !== null && clicked.y !== null) {
     flip_cross(g, clicked.x, clicked.y);
     clicked.x = null;
@@ -42,8 +49,7 @@ function update(g) {
     }
   }
 
-  s = moves > 1 ? "s" : ""
-  g.setText("Congrats! Solved in " + moves + ".");
+  won = true;
 }
 
 function onDotClicked(x, y) {
