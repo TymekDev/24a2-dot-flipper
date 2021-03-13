@@ -14,6 +14,7 @@ function create(g) {
 
   moves = 0;
 
+  var x, y;
   for (let i = 0; i < n_moves; i++) {
     x = Math.floor(Math.random() * dim.w);
     y = Math.floor(Math.random() * dim.h);
