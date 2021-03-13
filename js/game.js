@@ -47,7 +47,7 @@ function reset(g) {
 
 function update(g) {
   if (won) {
-    if (text_offset == padding_size) {
+    if (text_offset === padding_size) {
       padding_size = -1;
       text_offset = 0;
       text = won_text(0);
@@ -67,7 +67,7 @@ function update(g) {
 
   for (let ix = 0; ix < dim.w; ix++) {
     for (let iy = 0; iy < dim.h; iy++) {
-      if (g.getDot(ix, iy) != Color.Gray) {
+      if (g.getDot(ix, iy) !== Color.Gray) {
         g.setText("Moves: " + moves);
         return;
       }
