@@ -3,9 +3,19 @@ let dim = {
   h: 15,
 }
 
-var clicked = {x: null, y: null};
+var max_req_moves = 15,
+    clicked = {x: null, y: null};
 
-function create(g) {}
+function create(g) {
+  let n_moves = Math.floor(Math.random() * 15);
+
+  for (let i = 0; i < max_req_moves; i++) {
+    x = Math.floor(Math.random() * dim.w);
+    y = Math.floor(Math.random() * dim.h);
+
+    flipCross(g, x, y);
+  }
+}
 
 function update(g) {
   if (clicked.x !== null && clicked.y !== null) {
