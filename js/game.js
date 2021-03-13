@@ -3,12 +3,14 @@ let dim = {
   h: 15,
 }
 
-var won,
-    moves,
-    scramble_moves,
-    min_req_moves = 2,
+var min_req_moves = 2,
     max_req_moves = 10,
     clicked = {x: null, y: null};
+
+// Variables set within create
+var won,
+    moves,
+    scramble_moves;
 
 function create(g) {
   won = false;
