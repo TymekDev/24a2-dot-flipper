@@ -4,7 +4,7 @@ let dim = {
 }
 
 var moves = 0,
-    max_req_moves = 15,
+    max_req_moves = 5,
     clicked = {x: null, y: null};
 
 function create(g) {
