@@ -10,7 +10,9 @@ var min_req_moves = 2,
 // Variables set within create
 var won,
     moves,
-    scramble_moves;
+    scramble_moves,
+    text,
+    text_offset;
 
 function create(g) {
   reset(g);
@@ -31,6 +33,8 @@ function reset(g) {
     min_req_moves,
     Math.floor(Math.random() * max_req_moves)
   );
+  text = "";
+  text_offset = 0;
 
   for (let ix = 0; ix < dim.w; ix++) {
     for (let iy = 0; iy < dim.h; iy++) {
@@ -41,7 +45,7 @@ function reset(g) {
 
 function update(g) {
   if (won) {
-    g.setText("Congrats! Solved in " + moves + ".");
+    g.setText("Congrats! | " + moving_text());
     return;
   }
 
@@ -62,6 +66,24 @@ function update(g) {
   }
 
   won = true;
+  text = won_text()
+
+  // Set text immediately to avoid display stutter
+  g.setText("Congrats! | " + moving_text());
+}
+
+function won_text(padding_size = 5) {
+  var solved = "Solved in " + moves,
+      scrambled = "Scrambled with " + scramble_moves,
+      padding = " ".repeat(padding_size);
+
+  return padding + solved + padding + scrambled;
+}
+
+function moving_text() {
+  text_offset = (text_offset + 1) % text.length;
+
+  return text.substring(text_offset, ) + text.substr(0, text_offset);
 }
 
 function onDotClicked(x, y) {
@@ -78,6 +100,7 @@ let config = {
   gridHeight: dim.h,
   gridWidth: dim.w,
   clearGrid: false,
+  frameRate: 5,
 }
 
 let game = new Game(config);
