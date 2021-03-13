@@ -31,6 +31,12 @@ function reset(g) {
     min_req_moves,
     Math.floor(Math.random() * max_req_moves)
   );
+
+  for (let ix = 0; ix < dim.w; ix++) {
+    for (let iy = 0; iy < dim.h; iy++) {
+      g.setDot(ix, iy, Color.Gray);
+    }
+  }
 }
 
 function update(g) {
