@@ -4,13 +4,15 @@ let dim = {
 }
 
 var moves = 0,
-    max_req_moves = 5,
+    min_req_moves = 2,
+    max_req_moves = 10,
     clicked = {x: null, y: null};
 
 function create(g) {
-  let n_moves = Math.floor(Math.random() * 15);
+  let n_moves = Math.floor(Math.random() * max_req_moves);
+  n_moves = Math.max(n_moves, min_req_moves);
 
-  for (let i = 0; i < max_req_moves; i++) {
+  for (let i = 0; i < n_moves; i++) {
     x = Math.floor(Math.random() * dim.w);
     y = Math.floor(Math.random() * dim.h);
 
