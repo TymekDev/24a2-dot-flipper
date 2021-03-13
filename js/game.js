@@ -12,7 +12,8 @@ var won,
     moves,
     scramble_moves,
     text,
-    text_offset;
+    text_offset,
+    padding_size;
 
 function create(g) {
   reset(g);
@@ -34,7 +35,8 @@ function reset(g) {
     Math.floor(Math.random() * max_req_moves)
   );
   text = "";
-  text_offset = 0;
+  text_offset = 0,
+  padding_size = 20;
 
   for (let ix = 0; ix < dim.w; ix++) {
     for (let iy = 0; iy < dim.h; iy++) {
@@ -45,7 +47,14 @@ function reset(g) {
 
 function update(g) {
   if (won) {
+    if (text_offset == padding_size) {
+      padding_size = -1;
+      text_offset = 0;
+      text = won_text(0);
+    }
+
     g.setText("Congrats! | " + moving_text());
+
     return;
   }
 
@@ -66,18 +75,18 @@ function update(g) {
   }
 
   won = true;
-  text = won_text();
+  text = won_text(padding_size);
 
   // Set text immediately to avoid display stutter
   g.setText("Congrats! | " + moving_text());
 }
 
-function won_text(padding_size = 5) {
+function won_text(padding_size) {
   var solved = "Solved in " + moves,
       scrambled = "Scrambled with " + scramble_moves,
-      padding = " ".repeat(padding_size);
+      padding = " · ";
 
-  return padding + solved + padding + scrambled;
+  return " ".repeat(padding_size) + solved + padding + scrambled + padding;
 }
 
 function moving_text() {
