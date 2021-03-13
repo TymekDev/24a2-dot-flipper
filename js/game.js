@@ -51,11 +51,11 @@ function update(g) {
     clicked.y = null;
   }
 
-  g.setText("Moves: " + moves);
 
   for (let ix = 0; ix < dim.w; ix++) {
     for (let iy = 0; iy < dim.h; iy++) {
       if (g.getDot(ix, iy) != Color.Gray) {
+        g.setText("Moves: " + moves);
         return;
       }
     }
