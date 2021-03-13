@@ -4,18 +4,20 @@ let dim = {
 }
 
 var moves,
+    scramble_moves,
     min_req_moves = 2,
     max_req_moves = 10,
     clicked = {x: null, y: null};
 
 function create(g) {
-  let n_moves = Math.floor(Math.random() * max_req_moves);
-  n_moves = Math.max(n_moves, min_req_moves);
-
   moves = 0;
+  scramble_moves = Math.max(
+    min_req_moves,
+    Math.floor(Math.random() * max_req_moves)
+  );
 
   var x, y;
-  for (let i = 0; i < n_moves; i++) {
+  for (let i = 0; i < scramble_moves; i++) {
     x = Math.floor(Math.random() * dim.w);
     y = Math.floor(Math.random() * dim.h);
 
