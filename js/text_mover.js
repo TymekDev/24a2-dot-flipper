@@ -1,11 +1,13 @@
 let text_mover = class {
   initial_padding;
   initial_done;
+  static_text;
   text;
   text_offset = 0;
 
-  constructor(text, initial_padding = 20) {
+  constructor(static_text, text, initial_padding = 20) {
     this.initial_padding = initial_padding;
+    this.static_text = static_text;
     this.text = " ".repeat(initial_padding) + text;
 
     this.initial_done = false;
@@ -16,9 +18,9 @@ let text_mover = class {
     this.move();
 
     var text = this.text,
-        text_offset = this.text_offset;
+        offset = this.text_offset;
 
-    return text.substring(text_offset, ) + text.substr(0, text_offset);
+    return this.static_text + text.substring(offset, ) + text.substr(0, offset);
   }
 
   move() {
