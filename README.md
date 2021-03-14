@@ -1,7 +1,5 @@
-## Dot flipper
-A simple game implemented using [24a2 game engine][24a2].
-
-Disclaimer: named *Dot flipper* due to a lack of better description and failing
-at searching what's this game name is.
+## Dot Flipper
+A [simple game][Dot Flipper] implemented using [24a2 game engine][24a2].
 
 [24a2]: https://github.com/jamesroutley/24a2
+[Dot Flipper]: https://tmakowski.github.io/24a2-dot-flipper
