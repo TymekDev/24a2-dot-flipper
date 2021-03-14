@@ -29,7 +29,7 @@ let game_master = class {
     this.game_info = {
       won:            false,
       moves:          0,
-      scramble_moves: this.scramble_moves(),
+      scramble_moves: this.scramble_moves,
     };
 
     this.clear_canvas(g);
