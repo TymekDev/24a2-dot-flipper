@@ -19,7 +19,7 @@ function update(g) {
   gm.move(g);
 
   if (gm.has_player_won(g)) {
-    tm = new text_mover("Congrats! | ", gm.win_text);
+    tm = new text_mover("You won! | ", gm.win_text);
 
     // Set text immediately to avoid display stutter
     g.setText(tm.next);
