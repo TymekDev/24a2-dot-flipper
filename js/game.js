@@ -12,7 +12,7 @@ function update(g) {
     return;
   }
 
-  if (gm.game_info.clicked === null) {
+  if (!gm.new_click) {
     return;
   }
 

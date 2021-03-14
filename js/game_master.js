@@ -15,6 +15,10 @@ let game_master = class {
     clicked:        null,
   };
 
+  get new_click() {
+    return this.game_info.clicked !== null;
+  }
+
   get scramble_moves() {
     return Math.max(
       this.scramble_min,
