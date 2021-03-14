@@ -4,14 +4,7 @@ var clicked = {x: null, y: null};
 
 function create(g) {
   gm.new_game(g);
-
-  var x, y;
-  for (let i = 0; i < gm.scramble_moves; i++) {
-    x = Math.floor(Math.random() * gm.width);
-    y = Math.floor(Math.random() * gm.height);
-
-    flip_cross(g, x, y);
-  }
+  gm.scramble(g);
 }
 
 function update(g) {

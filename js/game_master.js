@@ -34,4 +34,14 @@ let game_master = class {
 
     this.clear_canvas(g);
   }
+
+  scramble(g) {
+    var x, y;
+    for (let i = 0; i < this.scramble_moves; i++) {
+      x = Math.floor(Math.random() * this.width);
+      y = Math.floor(Math.random() * this.height);
+
+      flip_cross(g, x, y);
+    }
+  }
 }
