@@ -61,15 +61,39 @@ let game_master = class {
       x = Math.floor(Math.random() * this.width);
       y = Math.floor(Math.random() * this.height);
 
-      flip_cross(g, x, y);
+      this.flip_cross(g, x, y);
     }
   }
 
   move(g) {
-    flip_cross(g, this.game_info.clicked.x, this.game_info.clicked.y);
+    this.flip_cross(g, this.game_info.clicked.x, this.game_info.clicked.y);
     this.game_info.clicked = null;
 
     g.setText("Moves: " + ++this.game_info.moves);
+  }
+
+  // flip_cross changes color between this.color_main and this.color_alt for
+  // dots with coordinates (x, *) and (*, y)
+  flip_cross(g, x, y) {
+    for (let ix = 0; ix < this.width; ix++) {
+      this.flip_dot(g, ix, y);
+    }
+
+    for (let iy = 0; iy < this.height; iy++) {
+      // Skip (x, y) as it was already flipped
+      if (iy == y) {
+        continue;
+      }
+
+      this.flip_dot(g, x, iy);
+    }
+  }
+
+  // flip_dot changes color between this.color_main and this.color_alt for dot
+  // at (x, y)
+  flip_dot(g, x, y) {
+    let is_main = (g.getDot(x, y) == this.color_main);
+    g.setDot(x, y, is_main ? this.color_alt : this.color_main);
   }
 
   has_player_won(g) {
