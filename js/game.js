@@ -20,18 +20,10 @@ function update(g) {
     return;
   }
 
-  tm = new text_mover(won_text());
+  tm = new text_mover(gm.win_text);
 
   // Set text immediately to avoid display stutter
   g.setText("Congrats! | " + tm.next);
-}
-
-function won_text() {
-  var solved = "Solved in " + gm.game_info.moves,
-      scrambled = "Scrambled with " + gm.game_info.scramble_moves,
-      padding = " · ";
-
-  return solved + padding + scrambled + padding;
 }
 
 function onDotClicked(x, y) {
