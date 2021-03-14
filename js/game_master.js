@@ -1,6 +1,6 @@
 let game_master = class {
-  width  = 5;
-  height = 5;
+  width  = 15;
+  height = 15;
 
   color_main = Color.Gray;
   color_alt  = Color.Black;
