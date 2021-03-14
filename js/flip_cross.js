@@ -1,11 +1,11 @@
 // flip_cross changes color between Color.Gray and Color.Black for dots at
 // (x, *) and (*, y)
 function flip_cross(g, x, y) {
-  for (let ix = 0; ix < dim.w; ix++) {
+  for (let ix = 0; ix < gm.width; ix++) {
     flip_dot(g, ix, y);
   }
 
-  for (let iy = 0; iy < dim.h; iy++) {
+  for (let iy = 0; iy < gm.height; iy++) {
     // Skip (x, y) as it was already flipped
     if (iy == y) {
       continue;

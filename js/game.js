@@ -1,46 +1,21 @@
-let dim = {
-  w: 15,
-  h: 15,
-}
+let gm = new game_master();
 
-var min_req_moves = 2,
-    max_req_moves = 10,
-    clicked = {x: null, y: null};
-
-// Variables set within reset()
-var won,
-    moves,
-    scramble_moves;
+var clicked = {x: null, y: null};
 
 function create(g) {
-  reset(g);
+  gm.new_game(g);
 
   var x, y;
-  for (let i = 0; i < scramble_moves; i++) {
-    x = Math.floor(Math.random() * dim.w);
-    y = Math.floor(Math.random() * dim.h);
+  for (let i = 0; i < gm.scramble_moves; i++) {
+    x = Math.floor(Math.random() * gm.width);
+    y = Math.floor(Math.random() * gm.height);
 
     flip_cross(g, x, y);
   }
 }
 
-function reset(g) {
-  won = false;
-  moves = 0;
-  scramble_moves = Math.max(
-    min_req_moves,
-    Math.floor(Math.random() * max_req_moves)
-  );
-
-  for (let ix = 0; ix < dim.w; ix++) {
-    for (let iy = 0; iy < dim.h; iy++) {
-      g.setDot(ix, iy, Color.Gray);
-    }
-  }
-}
-
 function update(g) {
-  if (won) {
+  if (gm.game_info.won) {
     g.setText("Congrats! | " + tm.next);
     return;
   }
@@ -52,16 +27,16 @@ function update(g) {
   }
 
 
-  for (let ix = 0; ix < dim.w; ix++) {
-    for (let iy = 0; iy < dim.h; iy++) {
+  for (let ix = 0; ix < gm.width; ix++) {
+    for (let iy = 0; iy < gm.height; iy++) {
       if (g.getDot(ix, iy) !== Color.Gray) {
-        g.setText("Moves: " + moves);
+        g.setText("Moves: " + gm.game_info.moves);
         return;
       }
     }
   }
 
-  won = true;
+  gm.game_info.won = true;
   tm = new text_mover(won_text());
 
   // Set text immediately to avoid display stutter
@@ -69,8 +44,8 @@ function update(g) {
 }
 
 function won_text() {
-  var solved = "Solved in " + moves,
-      scrambled = "Scrambled with " + scramble_moves,
+  var solved = "Solved in " + gm.game_info.moves,
+      scrambled = "Scrambled with " + gm.game_info.scramble_moves,
       padding = " · ";
 
   return solved + padding + scrambled + padding;
@@ -79,7 +54,7 @@ function won_text() {
 function onDotClicked(x, y) {
   clicked.x = x;
   clicked.y = y;
-  moves++;
+  gm.game_info.moves++;
 }
 
 let config = {
@@ -87,8 +62,8 @@ let config = {
   create: create,
   update: update,
   onDotClicked: onDotClicked,
-  gridHeight: dim.h,
-  gridWidth: dim.w,
+  gridHeight: gm.height,
+  gridWidth: gm.width,
   clearGrid: false,
   frameRate: 5,
 }
