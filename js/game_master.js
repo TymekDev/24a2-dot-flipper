@@ -26,19 +26,6 @@ let game_master = class {
     );
   }
 
-  clear_canvas(g) {
-    for (let ix = 0; ix < this.width; ix++) {
-      for (let iy = 0; iy < this.height; iy++) {
-        g.setDot(ix, iy, this.color_main);
-      }
-    }
-  }
-
-  flip_cross_click(g) {
-    flip_cross(g, this.game_info.clicked.x, this.game_info.clicked.y);
-    this.game_info.clicked = null;
-  }
-
   new_game(g) {
     this.game_info = {
       won:            false,
@@ -50,6 +37,14 @@ let game_master = class {
     this.clear_canvas(g);
   }
 
+  clear_canvas(g) {
+    for (let ix = 0; ix < this.width; ix++) {
+      for (let iy = 0; iy < this.height; iy++) {
+        g.setDot(ix, iy, this.color_main);
+      }
+    }
+  }
+
   scramble(g) {
     var x, y;
     for (let i = 0; i < this.scramble_moves; i++) {
@@ -59,4 +54,10 @@ let game_master = class {
       flip_cross(g, x, y);
     }
   }
+
+  flip_cross_click(g) {
+    flip_cross(g, this.game_info.clicked.x, this.game_info.clicked.y);
+    this.game_info.clicked = null;
+  }
+
 }
