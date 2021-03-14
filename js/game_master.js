@@ -30,6 +30,7 @@ let game_master = class {
       won:            false,
       moves:          0,
       scramble_moves: this.scramble_moves,
+      clicked:        null,
     };
 
     this.clear_canvas(g);

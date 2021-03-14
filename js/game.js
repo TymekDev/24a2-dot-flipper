@@ -1,7 +1,5 @@
 let gm = new game_master();
 
-var clicked = {x: null, y: null};
-
 function create(g) {
   gm.new_game(g);
   gm.scramble(g);
@@ -13,12 +11,10 @@ function update(g) {
     return;
   }
 
-  if (clicked.x !== null && clicked.y !== null) {
-    flip_cross(g, clicked.x, clicked.y);
-    clicked.x = null;
-    clicked.y = null;
+  if (gm.game_info.clicked !== null) {
+    flip_cross(g, gm.game_info.clicked.x, gm.game_info.clicked.y);
+    gm.game_info.clicked = null;
   }
-
 
   for (let ix = 0; ix < gm.width; ix++) {
     for (let iy = 0; iy < gm.height; iy++) {
@@ -45,8 +41,7 @@ function won_text() {
 }
 
 function onDotClicked(x, y) {
-  clicked.x = x;
-  clicked.y = y;
+  gm.game_info.clicked = {x: x, y: y};
   gm.game_info.moves++;
 }
 
