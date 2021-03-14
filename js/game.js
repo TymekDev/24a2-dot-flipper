@@ -1,5 +1,7 @@
 let gm = new game_master();
 
+var tm;
+
 function create(g) {
   gm.new_game(g);
 }
@@ -16,14 +18,12 @@ function update(g) {
 
   gm.move(g);
 
-  if (!gm.has_player_won(g)) {
-    return;
+  if (gm.has_player_won(g)) {
+    tm = new text_mover("Congrats! | ", gm.win_text);
+
+    // Set text immediately to avoid display stutter
+    g.setText(tm.next);
   }
-
-  tm = new text_mover("Congrats! | ", gm.win_text);
-
-  // Set text immediately to avoid display stutter
-  g.setText(tm.next);
 }
 
 function onDotClicked(x, y) {
