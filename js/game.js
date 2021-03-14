@@ -19,7 +19,6 @@ function update(g) {
   for (let ix = 0; ix < gm.width; ix++) {
     for (let iy = 0; iy < gm.height; iy++) {
       if (g.getDot(ix, iy) !== Color.Gray) {
-        g.setText("Moves: " + gm.game_info.moves);
         return;
       }
     }
@@ -42,7 +41,6 @@ function won_text() {
 
 function onDotClicked(x, y) {
   gm.game_info.clicked = {x: x, y: y};
-  gm.game_info.moves++;
 }
 
 let config = {
