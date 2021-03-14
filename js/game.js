@@ -2,8 +2,6 @@ let gm = new game_master();
 
 function create(g) {
   gm.new_game(g);
-  gm.scramble(g);
-  g.setText("Moves: 0");
 }
 
 function update(g) {

@@ -35,6 +35,8 @@ let game_master = class {
     };
 
     this.clear_canvas(g);
+    this.scramble(g);
+    g.setText("Moves: 0");
   }
 
   clear_canvas(g) {
