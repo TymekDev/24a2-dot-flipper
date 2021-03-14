@@ -7,13 +7,10 @@ var min_req_moves = 2,
     max_req_moves = 10,
     clicked = {x: null, y: null};
 
-// Variables set within create
+// Variables set within reset()
 var won,
     moves,
-    scramble_moves,
-    text,
-    text_offset,
-    padding_size;
+    scramble_moves;
 
 function create(g) {
   reset(g);
@@ -34,9 +31,6 @@ function reset(g) {
     min_req_moves,
     Math.floor(Math.random() * max_req_moves)
   );
-  text = "";
-  text_offset = 0,
-  padding_size = 20;
 
   for (let ix = 0; ix < dim.w; ix++) {
     for (let iy = 0; iy < dim.h; iy++) {
@@ -47,14 +41,7 @@ function reset(g) {
 
 function update(g) {
   if (won) {
-    if (text_offset === padding_size) {
-      padding_size = -1;
-      text_offset = 0;
-      text = won_text(0);
-    }
-
-    g.setText("Congrats! | " + moving_text());
-
+    g.setText("Congrats! | " + tm.next);
     return;
   }
 
@@ -75,24 +62,18 @@ function update(g) {
   }
 
   won = true;
-  text = won_text(padding_size);
+  tm = new text_mover(won_text());
 
   // Set text immediately to avoid display stutter
-  g.setText("Congrats! | " + moving_text());
+  g.setText("Congrats! | " + tm.next);
 }
 
-function won_text(padding_size) {
+function won_text() {
   var solved = "Solved in " + moves,
       scrambled = "Scrambled with " + scramble_moves,
       padding = " · ";
 
-  return " ".repeat(padding_size) + solved + padding + scrambled + padding;
-}
-
-function moving_text() {
-  text_offset = (text_offset + 1) % text.length;
-
-  return text.substring(text_offset, ) + text.substr(0, text_offset);
+  return solved + padding + scrambled + padding;
 }
 
 function onDotClicked(x, y) {
