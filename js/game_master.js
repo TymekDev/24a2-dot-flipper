@@ -26,6 +26,14 @@ let game_master = class {
     );
   }
 
+  get win_text() {
+    var solved = "Solved in " + this.game_info.moves,
+        scrambled = "Scrambled with " + this.game_info.scramble_moves,
+        padding = " · ";
+
+    return solved + padding + scrambled + padding;
+  }
+
   new_game(g) {
     this.game_info = {
       won:            false,
