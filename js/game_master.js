@@ -57,7 +57,7 @@ let game_master = class {
     }
   }
 
-  flip_cross_click(g) {
+  move(g) {
     flip_cross(g, this.game_info.clicked.x, this.game_info.clicked.y);
     this.game_info.clicked = null;
   }

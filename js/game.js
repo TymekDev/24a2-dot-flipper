@@ -14,7 +14,7 @@ function update(g) {
     return;
   }
 
-  gm.flip_cross_click(g);
+  gm.move(g);
 
   for (let ix = 0; ix < gm.width; ix++) {
     for (let iy = 0; iy < gm.height; iy++) {
