@@ -16,8 +16,7 @@ function update(g) {
     return;
   }
 
-  flip_cross(g, gm.game_info.clicked.x, gm.game_info.clicked.y);
-  gm.game_info.clicked = null;
+  gm.flip_cross_click(g);
 
   for (let ix = 0; ix < gm.width; ix++) {
     for (let iy = 0; iy < gm.height; iy++) {
