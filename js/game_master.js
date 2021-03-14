@@ -25,6 +25,11 @@ let game_master = class {
     }
   }
 
+  flip_cross_click(g) {
+    flip_cross(g, this.game_info.clicked.x, this.game_info.clicked.y);
+    this.game_info.clicked = null;
+  }
+
   new_game(g) {
     this.game_info = {
       won:            false,
