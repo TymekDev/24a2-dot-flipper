@@ -12,7 +12,7 @@ function update(g) {
     return;
   }
 
-  if (!gm.new_click) {
+  if (!gm.was_clicked) {
     return;
   }
 

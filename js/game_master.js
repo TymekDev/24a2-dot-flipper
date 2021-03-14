@@ -15,7 +15,7 @@ let game_master = class {
     clicked:        null,
   };
 
-  get new_click() {
+  get was_clicked() {
     return this.game_info.clicked !== null;
   }
 
