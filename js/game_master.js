@@ -64,4 +64,17 @@ let game_master = class {
     g.setText("Moves: " + ++this.game_info.moves);
   }
 
+  has_player_won(g) {
+    for (let ix = 0; ix < this.width; ix++) {
+      for (let iy = 0; iy < this.height; iy++) {
+        if (g.getDot(ix, iy) !== this.color_main) {
+          return false;
+        }
+      }
+    }
+
+    this.game_info.won = true;
+
+    return true;
+  }
 }

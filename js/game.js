@@ -16,15 +16,10 @@ function update(g) {
 
   gm.move(g);
 
-  for (let ix = 0; ix < gm.width; ix++) {
-    for (let iy = 0; iy < gm.height; iy++) {
-      if (g.getDot(ix, iy) !== Color.Gray) {
-        return;
-      }
-    }
+  if (!gm.has_player_won(g)) {
+    return;
   }
 
-  gm.game_info.won = true;
   tm = new text_mover(won_text());
 
   // Set text immediately to avoid display stutter
