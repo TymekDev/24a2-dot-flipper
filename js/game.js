@@ -6,7 +6,7 @@ function create(g) {
 
 function update(g) {
   if (gm.game_info.won) {
-    g.setText("Congrats! | " + tm.next);
+    g.setText(tm.next);
     return;
   }
 
@@ -20,10 +20,10 @@ function update(g) {
     return;
   }
 
-  tm = new text_mover(gm.win_text);
+  tm = new text_mover("Congrats! | ", gm.win_text);
 
   // Set text immediately to avoid display stutter
-  g.setText("Congrats! | " + tm.next);
+  g.setText(tm.next);
 }
 
 function onDotClicked(x, y) {
