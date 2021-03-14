@@ -3,6 +3,7 @@ let gm = new game_master();
 function create(g) {
   gm.new_game(g);
   gm.scramble(g);
+  g.setText("Moves: 0");
 }
 
 function update(g) {
@@ -11,10 +12,12 @@ function update(g) {
     return;
   }
 
-  if (gm.game_info.clicked !== null) {
-    flip_cross(g, gm.game_info.clicked.x, gm.game_info.clicked.y);
-    gm.game_info.clicked = null;
+  if (gm.game_info.clicked === null) {
+    return;
   }
+
+  flip_cross(g, gm.game_info.clicked.x, gm.game_info.clicked.y);
+  gm.game_info.clicked = null;
 
   for (let ix = 0; ix < gm.width; ix++) {
     for (let iy = 0; iy < gm.height; iy++) {
