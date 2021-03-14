@@ -8,6 +8,8 @@ let game_master = class {
   scramble_min = 2;
   scramble_max = 10;
 
+  game_info;
+
   get scramble_moves() {
     return Math.max(
       this.scramble_min,
@@ -21,5 +23,15 @@ let game_master = class {
         g.setDot(ix, iy, this.color_main);
       }
     }
+  }
+
+  new_game(g) {
+    this.game_info = {
+      won:            false,
+      moves:          0,
+      scramble_moves: this.scramble_moves(),
+    };
+
+    this.clear_canvas(g);
   }
 }
