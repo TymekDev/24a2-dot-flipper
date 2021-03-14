@@ -8,7 +8,12 @@ let game_master = class {
   scramble_min = 2;
   scramble_max = 10;
 
-  game_info;
+  game_info = {
+    won:            undefined,
+    moves:          undefined,
+    scramble_moves: undefined,
+    clicked:        null,
+  };
 
   get scramble_moves() {
     return Math.max(
